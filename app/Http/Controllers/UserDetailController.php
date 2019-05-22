@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\UserDetail;
 use Illuminate\Http\Request;
+use App\Pekerjaan;
 use App\User;
 use File;
+use App\CV;
 
 class UserDetailController extends Controller
 {
@@ -43,11 +45,6 @@ class UserDetailController extends Controller
         //
         $detail = new UserDetail();
         // dd($request->file('userfile'));
-        //upload CV
-        $file = $request->file('userfile');
-        $destination_path = 'cv/';
-        $filename = 'CV'.$file->getClientOriginalName();
-        $file->move($destination_path,$filename);
 
         //save to database
         $detail->user_id = $request->user_id;
@@ -61,7 +58,6 @@ class UserDetailController extends Controller
         $detail->sma = $request->sma;
         $detail->universitas = $request->universitas;
         $detail->kemampuan = $request->kemampuan;
-        $detail->file = $destination_path . $filename;
         $detail->save();
 
         return redirect('user');
@@ -147,8 +143,16 @@ class UserDetailController extends Controller
 
     public function showcv()
     {
-        $showcv = UserDetail::pluck('file');
-        $tamcv = json_decode($showcv);
-        return view('admin.index',compact('tamcv'));
+        $showcv = CV::all();
+        // $tamcv = json_decode($showcv);
+        // dd($showcv);
+        return view('admin.index',compact('showcv'));
+    }
+
+    public function statcv($id)
+    {
+        $statcv = CV::find($id);
+        // dd($statcv);
+        return view('user.statcv',compact('statcv'));
     }
 }

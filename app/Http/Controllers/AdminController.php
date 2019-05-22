@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Pekerjaan;
+use App\UserDetail;
+use App\CV;
 
 class AdminController extends Controller
 {
@@ -79,6 +81,14 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $stat = CV::find($id);
+        if ($stat->statfile == 'Unread') {
+            $stat->statfile = 'Accept';
+        } else {
+            $stat->statfile = 'Rejected';
+        }
+        $stat->save();
+        return redirect('admin');
     }
 
     /**

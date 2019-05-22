@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasOne(UserDetail::class);
     }
 
+    public function hascv()
+    {
+        return $this->hasOne(CV::class);
+    }
+
     public function authorizeRoles($roles)
     {
         if (is_array($roles)) {

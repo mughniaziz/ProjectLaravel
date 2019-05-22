@@ -19,7 +19,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('user')}}">Home</a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('upload')}}">Upload CV</a>
+            </li>
         @endif
             <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
@@ -39,6 +41,9 @@
                     @if (Auth::user()->hasRole('user'))
                         <li class="nav-item">
                             <a href="{{route('user.edit',Auth::user()->userdetail->id)}}" class="nav-link">Edit Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('statcv',Auth::user()->userdetail->id)}}" class="nav-link">Status CV</a>
                         </li>
                     @endif
                     <div class="dropdown-divider"> </div>

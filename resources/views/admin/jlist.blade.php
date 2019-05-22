@@ -16,7 +16,6 @@
             <tr>
                 <td>{!! $job->n_pekerjaan !!}</td>
                 <td>{!! $job->d_pekerjaan !!}</td>
-                <td><a href="" class="btn btn-raised">Show</a></td>
                 <td><form action="{{route('admin.destroy',$job->id)}}" method="POST" class="form-group">
                     {{csrf_field()}} {{method_field('DELETE')}}
                     <button class="btn btn-raised">Delete</button>

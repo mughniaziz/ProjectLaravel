@@ -94,17 +94,6 @@
         </div>
         <div class="form-group">
             <div class="col">
-                <label for="CV" class="col-form-label">Upload CV</label>
-            </div>
-            <div class="col">
-                <div class="custom-file">
-                    <input type="file" name="userfile" id="userfile" class="custom-file-input" required>
-                    <label class="custom-file-label" for="customFile">Pilih Berkas</label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col">
                 <div class="form-row">
                     <div class="col-md-8 form-group">
                         <button type="submit" class="btn btn-raised btn-primary">Save</button>
@@ -120,14 +109,6 @@
     <script src="{{asset('js/bootstrap.js')}}"></script>
     <script src="{{asset('js/all.js')}}"></script>
     <script src="{{asset('js/fontwaesome.js')}}"></script>
-
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-          var fileName = $(this).val().split("\\").pop();
-          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-</script>
 </body>
 </html>
     

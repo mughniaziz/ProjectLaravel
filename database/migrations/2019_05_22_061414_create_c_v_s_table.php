@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePekerjaanUserTable extends Migration
+class CreateCVsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatePekerjaanUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('pekerjaan_user', function (Blueprint $table) {
+        Schema::create('c_v_s', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('pekerjaan_id');
+            $table->string('file')->nullable();
+            $table->string('statfile')->default('Unread');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatePekerjaanUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pekerjaan_user');
+        Schema::dropIfExists('c_v_s');
     }
 }

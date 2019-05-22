@@ -8,18 +8,25 @@
             <thead>
                 <tr>
                     <th>Nama File</th>
+                    <th>Status</th>
                     <th>Option</th>
                     <th>Download</th>
-                    <th>Status</th>
                 </tr>
             </thead>
-            @foreach ($tamcv as $cv)
+            @foreach ($showcv as $cv)
                 <tbody>
                     <tr>
-                        <td>{!! $cv !!}</td>
-                        <td>Masih Kosong</td>
-                        <td><a href="{{$cv}}">Download</a></td>
-                        <td>Unread</td>
+                        <td>{!! $cv->file !!}</td>
+                        <td>{!! $cv->statfile !!}
+                    <td><form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
+                        {{csrf_field()}} {{method_field('PUT')}}
+                        <button type="submit" class="btn btn-raised">Accept</button>
+                    </form>
+                    <form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
+                        {{csrf_field()}} {{method_field('PUT')}}
+                        <button type="submit" class="btn btn-raised">Reject</button>
+                    </form></td>
+                        <td><a href="{{$cv->file}}">Download</a></td>
                     </tr>
                 </tbody>
             @endforeach

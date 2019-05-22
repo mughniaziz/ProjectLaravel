@@ -26,7 +26,6 @@ class CreateUserDetailsTable extends Migration
             $table->text('sma');
             $table->text('universitas');
             $table->text('kemampuan');
-            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
