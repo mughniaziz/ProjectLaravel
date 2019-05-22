@@ -14,8 +14,14 @@ class PekerjaanController extends Controller
     {
         $jobs = Pekerjaan::find($id);
         $user = Auth::user();
-        $user->jobs()->attach($jobs);
-
-        return view('user.jobadd');
+        $statcv = Auth::user()->hascv->statfile;
+        // dd($statcv);
+        if($statcv == 'Accept') {
+            $user->jobs()->attach($jobs);
+            return view('user.jobadd');
+        } else {
+            return redirect()->route('upload.edit',Auth::user()->hascv->id);
+        }
+        
     }
 }

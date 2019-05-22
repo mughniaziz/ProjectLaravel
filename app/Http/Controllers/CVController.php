@@ -43,15 +43,15 @@ class CVController extends Controller
             'userfile'     => 'required|image|mimes:pdf,PDF',
          ]);
         $cv = new CV();
-        $file = $request->file('userfile');
+        
+            $file = $request->file('userfile');
+            $destination_path = 'cv/';
+            $filename = $file->getClientOriginalName();
+            $file->move($destination_path,$filename);
+            $cv->file = $destination_path . $filename;
+
         // dd($file);
-        $destination_path = 'cv/';
-        $filename = $file->getClientOriginalName();
-        $file->move($destination_path,$filename);
-
         $cv->user_id = Auth::user()->id;
-        $cv->file = $destination_path . $filename;
-
         $cv->save();
 
         return redirect('user');
@@ -74,9 +74,11 @@ class CVController extends Controller
      * @param  \App\CV  $cV
      * @return \Illuminate\Http\Response
      */
-    public function edit(CV $cV)
+    public function edit($id)
     {
         //
+        $euploadcv = CV::find($id);
+        return view('user.euploadcv',compact('euploadcv'));
     }
 
     /**
@@ -86,9 +88,27 @@ class CVController extends Controller
      * @param  \App\CV  $cV
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CV $cV)
+    public function update(Request $request, $id)
     {
         //
+        $validation = Validator::make($request->all(), [
+            'userfile'     => 'required|image|mimes:pdf,PDF',
+         ]);
+        $cv = CV::find($id);
+        if($file = $request->file('userfile')){
+            $file = $request->file('userfile');
+            $destination_path = 'cv/';
+            $filename = $file->getClientOriginalName();
+            $file->move($destination_path,$filename);
+            $cv->file = $destination_path . $filename;
+            $cv->statfile = 'Unread';
+        }
+        // dd($file);
+        
+        $cv->user_id = Auth::user()->id;
+        $cv->save();
+
+        return redirect('user');
     }
 
     /**
@@ -97,7 +117,7 @@ class CVController extends Controller
      * @param  \App\CV  $cV
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CV $cV)
+    public function destroy($id)
     {
         //
     }

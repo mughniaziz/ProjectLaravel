@@ -20,11 +20,11 @@
                         <td>{!! $cv->statfile !!}
                     <td><form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
                         {{csrf_field()}} {{method_field('PUT')}}
-                        <button type="submit" class="btn btn-raised">Accept</button>
+                        <button name="submit" type="submit" class="btn btn-raised" value="Accept">Accept</button>
                     </form>
                     <form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
                         {{csrf_field()}} {{method_field('PUT')}}
-                        <button type="submit" class="btn btn-raised">Reject</button>
+                        <button name="submit" type="submit" class="btn btn-raised" value="Reject">Reject</button>
                     </form></td>
                         <td><a href="{{$cv->file}}">Download</a></td>
                     </tr>

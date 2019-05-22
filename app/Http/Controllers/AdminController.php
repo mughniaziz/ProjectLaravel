@@ -82,12 +82,9 @@ class AdminController extends Controller
     {
         //
         $stat = CV::find($id);
-        if ($stat->statfile == 'Unread') {
-            $stat->statfile = 'Accept';
-        } else {
-            $stat->statfile = 'Rejected';
-        }
+        $stat->statfile = $request->submit;
         $stat->save();
+        // dd($request->all());
         return redirect('admin');
     }
 
