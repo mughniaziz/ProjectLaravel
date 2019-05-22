@@ -9,7 +9,7 @@
             <h4>{!! $job->n_pekerjaan !!}</h4>
             <div>{!! $job->d_pekerjaan !!}</div>
             <div class="col-lg-9">
-                <a href="#" class="btn btn-raised btn-primary">Lamar Pekerjaan</a>
+            <a href="{{route('lamar',$job->id)}}" class="btn btn-raised btn-primary">Lamar Pekerjaan</a>
             </div>
         </div>
         @endforeach

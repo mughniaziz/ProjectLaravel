@@ -21,6 +21,6 @@ class Pekerjaan extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

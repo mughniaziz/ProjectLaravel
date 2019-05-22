@@ -31,3 +31,4 @@ Route::get('/','AdminController@carikerja');
 Route::get('user','AdminController@lamarkerja');
 Route::get('profile','UserDetailController@editprofile')->name('editprofile');
 Route::get('admin','UserDetailController@showcv');
+Route::get('lamar/{id}','PekerjaanController@apply')->name('lamar');
