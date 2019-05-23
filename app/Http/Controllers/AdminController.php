@@ -114,18 +114,6 @@ class AdminController extends Controller
         return view('admin.jlist',compact('jobs'));
     }
 
-    public function carikerja()
-    {
-        $jobs = Pekerjaan::all();
-        return view('shared.index',compact('jobs'));
-    }
-
-    public function lamarkerja()
-    {
-        $jobs = Pekerjaan::all();
-        return view('user.index',compact('jobs'));
-    }
-
     public function showcv()
     {
         $showcv = CV::all();

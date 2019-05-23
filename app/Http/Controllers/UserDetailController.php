@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Pekerjaan;
 use App\User;
 use File;
@@ -52,13 +53,7 @@ class UserDetailController extends Controller
         $detail->email = $request->email;
         $detail->alamat = $request->alamat;
         $detail->gender = $request->gender;
-
-        if ($request->gender == 'laki-laki || Laki-laki') {
-            $detail->gender = 'Pria';
-        } else {
-            $detail->gender = 'Wanita';
-        }
-
+        $detail->notelp = $request->notelp;
         $detail->ttl = $request->ttl;
         $detail->sd = $request->sd;
         $detail->smp = $request->smp;
@@ -92,7 +87,11 @@ class UserDetailController extends Controller
         //
         $detail = UserDetail::find($id);
         // dd($detail);
-        return view('user.edit',compact('detail'));
+        if(empty(Auth::user()->userdetail)){
+            return redirect()->route('user.create');
+        } else {
+            return view('user.edit',compact('detail'));
+        }
     }
 
     /**
@@ -145,7 +144,12 @@ class UserDetailController extends Controller
 
     public function editprofile()
     {
-        return view('user.userdetail');
+        if(empty(Auth::user()->userdetail)){
+            return redirect()->route('user.create');
+        } else {
+            return view('user.edit');
+        }
+        
     }
 
     public function showcv()
@@ -159,5 +163,22 @@ class UserDetailController extends Controller
         $statcv = CV::find($id);
         // dd($statcv);
         return view('user.statcv',compact('statcv'));
+    }
+
+    public function carikerja()
+    {
+        $jobs = Pekerjaan::all();
+        return view('shared.index',compact('jobs'));
+    }
+
+    public function lamarkerja()
+    {
+        $jobs = Pekerjaan::all();
+        return view('user.index',compact('jobs'));
+    }
+
+    public function efirst()
+    {
+        return view('error.efirst');
     }
 }

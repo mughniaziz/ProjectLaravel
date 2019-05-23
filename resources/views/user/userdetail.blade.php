@@ -56,6 +56,10 @@
                         <label for="tanggal" class="col-form-label">Tanggal Lahir</label>
                         <input class="form-control" type="date" name="ttl" id="ttl" value="{{Auth::user()->ttl}}" readonly>
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="notelp" class="col-form-label">Nomor Telepon</label>
+                        <input class="form-control" type="text" name="notelp" id="notelp" required>
+                    </div>
                 </div>  
             </div>
         </div> 

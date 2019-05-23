@@ -21,6 +21,7 @@ class CreateUserDetailsTable extends Migration
             $table->text('alamat');
             $table->string('gender');
             $table->date('ttl');
+            $table->string('notelp');
             $table->text('sd');
             $table->text('smp');
             $table->text('sma');

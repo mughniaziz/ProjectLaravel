@@ -15,9 +15,14 @@
             </div>
         </div>
     </div>
+    <div class="clear">
+
+    </div>
     <div class="form-group">
-        <div class="col d-flex justify-content-center">
-            <button type="submit" class="btn btn-raised btn-primary">Upload</button>
+        <div class="col pt-3">
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-raised btn-primary">Upload</button>
+            </div>
         </div>
     </div>
 @endsection

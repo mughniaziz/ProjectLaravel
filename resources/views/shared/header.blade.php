@@ -15,12 +15,12 @@
             
         @endif
 
-        @if (Auth::user()->hasRole('user'))
+        @if (Auth::user()->hasRole('user')&&Auth::user()->hascv != null)
             <li class="nav-item">
                 <a class="nav-link" href="{{url('user')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('upload')}}">Upload CV</a>
+                <a class="nav-link" href="{{route('upload.edit',Auth::user()->hascv->id)}}">Upload CV</a>
             </li>
         @endif
             <li class="dropdown nav-item">
@@ -38,7 +38,7 @@
                                 <a href="{{route('jlist')}}" class="nav-link">Lihat Pekerjaan</a>
                         </li>
                     @endif
-                    @if (Auth::user()->hasRole('user'))
+                    @if (Auth::user()->hasRole('user')&&Auth::user()->hascv != null)
                         <li class="nav-item">
                             <a href="{{route('user.edit',Auth::user()->userdetail->id)}}" class="nav-link">Edit Profile</a>
                         </li>

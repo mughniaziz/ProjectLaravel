@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CV;
 use Illuminate\Http\Request;
 use Validator;
+use File;
 use Illuminate\Support\Facades\Auth;
 
 class CVController extends Controller
@@ -43,7 +44,9 @@ class CVController extends Controller
             'userfile' => 'required|file|mimes:pdf'
         ]);
         $cv = new CV();
-        
+        if(empty(Auth::user()->userdetail)){
+            return redirect()->route('user.create');
+        } else {
             $file = $request->file('userfile');
             $destination_path = 'cv/';
             $filename = $file->getClientOriginalName();
@@ -51,10 +54,12 @@ class CVController extends Controller
             $cv->file = $destination_path . $filename;
 
         // dd($file);
-        $cv->user_id = Auth::user()->id;
-        $cv->save();
+            $cv->user_id = Auth::user()->id;
+            $cv->save();
 
-        return redirect('user');
+            return redirect('user');
+        }
+            
     }
 
     /**
@@ -96,6 +101,7 @@ class CVController extends Controller
         ]);
         $cv = CV::find($id);
         if($file = $request->file('userfile')){
+            File::delete($cv->file);
             $file = $request->file('userfile');
             $destination_path = 'cv/';
             $filename = $file->getClientOriginalName();
