@@ -71,14 +71,17 @@
                         </div>
 
                         <div class="form-group">
-                                <label for="ttl" class="col-md-4 control-label">Gender</label>
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
     
-                                <div class="col-md-6">
-                                    <input type="text" name="gender" id="gender" class="form-control" required>
-                                </div>
+                            <div class="col-md-6">
+                                <select class="form-control" name="gender">
+                                    <option selected>Gender...</option>
+                                    <option value="Pria">Pria</option>
+                                    <option value="Wanita">Wanita</option>
+                                </select>
                             </div>
-    
-
+                        </div>
+                            
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
