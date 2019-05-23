@@ -179,6 +179,6 @@ class UserDetailController extends Controller
 
     public function efirst()
     {
-        return view('error.efirst');
+        return view('errors.efirst');
     }
 }
