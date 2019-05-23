@@ -52,6 +52,13 @@ class UserDetailController extends Controller
         $detail->email = $request->email;
         $detail->alamat = $request->alamat;
         $detail->gender = $request->gender;
+
+        if ($request->gender == 'laki-laki || Laki-laki') {
+            $detail->gender = 'Pria';
+        } else {
+            $detail->gender = 'Wanita';
+        }
+
         $detail->ttl = $request->ttl;
         $detail->sd = $request->sd;
         $detail->smp = $request->smp;
@@ -60,7 +67,7 @@ class UserDetailController extends Controller
         $detail->kemampuan = $request->kemampuan;
         $detail->save();
 
-        return redirect('user');
+        return redirect('upload');
     }
 
     /**

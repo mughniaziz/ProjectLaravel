@@ -66,6 +66,7 @@
 
                             <div class="col-md-6">
                                 <input type="date" name="ttl" id="ttl" class="form-control" required>
+                                <div class="text-danger">{{ $errors->first('ttl') }}</div>
                             </div>
                         </div>
 

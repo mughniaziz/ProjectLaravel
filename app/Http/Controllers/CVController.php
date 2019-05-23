@@ -91,9 +91,9 @@ class CVController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $validation = Validator::make($request->all(), [
-            'userfile'     => 'required|file|mimes:pdf,PDF',
-         ]);
+        $request->validate([
+            'userfile' => 'required|file|mimes:pdf'
+        ]);
         $cv = CV::find($id);
         if($file = $request->file('userfile')){
             $file = $request->file('userfile');

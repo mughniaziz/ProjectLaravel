@@ -11,6 +11,7 @@
             <div class="custom-file">
                 <input type="file" name="userfile" id="userfile" class="custom-file-input" required>
                 <label class="custom-file-label" for="customFile">Pilih Berkas PDF</label>
+                <div class="text-danger">{!! errors->first('userfile') !!}
             </div>
         </div>
     </div>
