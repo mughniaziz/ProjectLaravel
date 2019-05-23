@@ -39,9 +39,9 @@ class CVController extends Controller
     public function store(Request $request)
     {
         //
-        $validation = Validator::make($request->all(), [
-            'userfile'     => 'required|image|mimes:pdf,PDF',
-         ]);
+        $request->validate([
+            'userfile' => 'required|file|mimes:pdf'
+        ]);
         $cv = new CV();
         
             $file = $request->file('userfile');
@@ -92,7 +92,7 @@ class CVController extends Controller
     {
         //
         $validation = Validator::make($request->all(), [
-            'userfile'     => 'required|image|mimes:pdf,PDF',
+            'userfile'     => 'required|file|mimes:pdf,PDF',
          ]);
         $cv = CV::find($id);
         if($file = $request->file('userfile')){
