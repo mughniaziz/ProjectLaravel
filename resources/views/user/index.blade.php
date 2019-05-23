@@ -9,7 +9,9 @@
             <h4>{!! $job->n_pekerjaan !!}</h4>
             <div>{!! $job->d_pekerjaan !!}</div>
             <div class="col-lg-9">
-            <a href="{{route('lamar',$job->id)}}" class="btn btn-raised btn-primary">Lamar Pekerjaan</a>
+                @if(Auth::user()->hasRole('user'))
+                <a href="{{route('lamar',$job->id)}}" class="btn btn-raised btn-primary">Lamar Pekerjaan</a>
+                @endif
             </div>
         </div>
         @endforeach

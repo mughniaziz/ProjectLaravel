@@ -144,8 +144,6 @@ class UserDetailController extends Controller
     public function showcv()
     {
         $showcv = CV::all();
-        // $tamcv = json_decode($showcv);
-        // dd($showcv);
         return view('admin.index',compact('showcv'));
     }
 

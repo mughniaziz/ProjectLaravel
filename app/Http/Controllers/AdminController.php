@@ -125,4 +125,10 @@ class AdminController extends Controller
         $jobs = Pekerjaan::all();
         return view('user.index',compact('jobs'));
     }
+
+    public function showcv()
+    {
+        $showcv = CV::all();
+        return view('admin.index',compact('showcv'));
+    }
 }
