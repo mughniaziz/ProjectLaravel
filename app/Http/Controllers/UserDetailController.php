@@ -47,6 +47,10 @@ class UserDetailController extends Controller
         $detail = new UserDetail();
         // dd($request->file('userfile'));
 
+        $request->validate([
+            'notelp' => 'required|max:13'
+        ]); 
+
         //save to database
         $detail->user_id = $request->user_id;
         $detail->nama = $request->nama;
@@ -104,6 +108,10 @@ class UserDetailController extends Controller
     public function update(Request $request,$id)
     {
         $detail = UserDetail::find($id);
+
+        $request->validate([
+            'notelp' => 'required|max:13'
+        ]); 
         //
         // dd($request->all());
         if($request->hasFile('userfile')){

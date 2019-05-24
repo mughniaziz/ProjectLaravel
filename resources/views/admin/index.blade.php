@@ -18,13 +18,13 @@
                     <tr>
                         <td>{!! $cv->file !!}</td>
                         <td>{!! $cv->statfile !!}
-                    <td><form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
+                    <td class="d-flex"><form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
                         {{csrf_field()}} {{method_field('PUT')}}
-                        <button name="submit" type="submit" class="btn btn-raised" value="Accept">Accept</button>
+                        <button name="submit" type="submit" class="btn btn-raised btn-primary mr-1" value="Accept">Accept</button>
                     </form>
                     <form class="form-group" method="POST" action="{{route('admin.update',$cv->id)}}">
                         {{csrf_field()}} {{method_field('PUT')}}
-                        <button name="submit" type="submit" class="btn btn-raised" value="Reject">Reject</button>
+                        <button name="submit" type="submit" class="btn btn-raised btn-danger ml-1" value="Reject">Reject</button>
                     </form></td>
                         <td><a href="{{$cv->file}}">Download</a></td>
                     </tr>

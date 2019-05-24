@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="UNIVERSITAS" class="col-form-label">UNIVERSITAS</label>   
-                        <input type="text" name="universitas" id="universitas" class="form-control" value="{{$detail->universitas}}"> 
+                        <input type="text" name="universitas" id="universitas" class="form-control" placeholder="Nama Kampus - Jurusan" value="{{$detail->universitas}}"> 
                         </div>    
                     </div>  
                 </div>  

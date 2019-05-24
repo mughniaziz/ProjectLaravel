@@ -11,6 +11,10 @@
     <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet">
 </head>
 <body>
+    <div class="form-group pt-3">
+        <h2 class="text-center">Your Profile Here</h2>
+    </div>
+
     <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="form-group">
@@ -83,7 +87,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="UNIVERSITAS" class="col-form-label">UNIVERSITAS</label>   
-                        <input type="text" name="universitas" id="universitas" class="form-control" required> 
+                        <input type="text" name="universitas" id="universitas" class="form-control" placeholder="Nama Kampus - Jurusan" required> 
                     </div>    
                 </div>  
             </div>  
