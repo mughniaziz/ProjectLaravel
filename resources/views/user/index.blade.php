@@ -10,7 +10,7 @@
             <div>{!! $job->d_pekerjaan !!}</div>
             <div class="col-lg-9">
                 @if(Auth::user()->hasRole('user'))
-                <a href="{{route('lamar',$job->id)}}" class="btn btn-raised btn-primary">Lamar Pekerjaan</a>
+                <a href="{{route('lamar',$job->id)}}" class="btn btn-raised btn-primary" onclick="confirm('Do you want to take this job ?')">Lamar Pekerjaan</a>
                 @endif
             </div>
         </div>
